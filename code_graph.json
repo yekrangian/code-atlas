@@ -1,0 +1,2324 @@
+{
+  "nodes": [
+    {
+      "id": "folder::tests",
+      "label": "tests",
+      "type": "folder",
+      "path": "tests",
+      "file_count": 4,
+      "subfolder_count": 0
+    },
+    {
+      "id": "file::.gitignore",
+      "label": ".gitignore",
+      "type": "file",
+      "path": ".gitignore",
+      "extension": "",
+      "module": null,
+      "folder": "",
+      "function_count": 0,
+      "is_python": false
+    },
+    {
+      "id": "file::__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "path": "__init__.py",
+      "extension": ".py",
+      "module": "__init__",
+      "folder": "",
+      "function_count": 0,
+      "is_python": true
+    },
+    {
+      "id": "file::config.yaml",
+      "label": "config.yaml",
+      "type": "file",
+      "path": "config.yaml",
+      "extension": ".yaml",
+      "module": null,
+      "folder": "",
+      "function_count": 0,
+      "is_python": false
+    },
+    {
+      "id": "file::main.py",
+      "label": "main.py",
+      "type": "file",
+      "path": "main.py",
+      "extension": ".py",
+      "module": "main",
+      "folder": "",
+      "function_count": 4,
+      "is_python": true
+    },
+    {
+      "id": "file::models.py",
+      "label": "models.py",
+      "type": "file",
+      "path": "models.py",
+      "extension": ".py",
+      "module": "models",
+      "folder": "",
+      "function_count": 14,
+      "is_python": true
+    },
+    {
+      "id": "file::services.py",
+      "label": "services.py",
+      "type": "file",
+      "path": "services.py",
+      "extension": ".py",
+      "module": "services",
+      "folder": "",
+      "function_count": 10,
+      "is_python": true
+    },
+    {
+      "id": "file::tests\\__init__.py",
+      "label": "__init__.py",
+      "type": "file",
+      "path": "tests\\__init__.py",
+      "extension": ".py",
+      "module": "tests",
+      "folder": "tests",
+      "function_count": 0,
+      "is_python": true
+    },
+    {
+      "id": "file::tests\\test_models.py",
+      "label": "test_models.py",
+      "type": "file",
+      "path": "tests\\test_models.py",
+      "extension": ".py",
+      "module": "tests.test_models",
+      "folder": "tests",
+      "function_count": 3,
+      "is_python": true
+    },
+    {
+      "id": "file::tests\\test_services.py",
+      "label": "test_services.py",
+      "type": "file",
+      "path": "tests\\test_services.py",
+      "extension": ".py",
+      "module": "tests.test_services",
+      "folder": "tests",
+      "function_count": 2,
+      "is_python": true
+    },
+    {
+      "id": "file::tests\\test_utils.py",
+      "label": "test_utils.py",
+      "type": "file",
+      "path": "tests\\test_utils.py",
+      "extension": ".py",
+      "module": "tests.test_utils",
+      "folder": "tests",
+      "function_count": 3,
+      "is_python": true
+    },
+    {
+      "id": "file::utils.py",
+      "label": "utils.py",
+      "type": "file",
+      "path": "utils.py",
+      "extension": ".py",
+      "module": "utils",
+      "folder": "",
+      "function_count": 6,
+      "is_python": true
+    },
+    {
+      "id": "module::__init__",
+      "label": "__init__",
+      "type": "module",
+      "name": "__init__",
+      "file": "__init__.py",
+      "folder": "",
+      "function_count": 0,
+      "class_count": 0
+    },
+    {
+      "id": "module::main",
+      "label": "main",
+      "type": "module",
+      "name": "main",
+      "file": "main.py",
+      "folder": "",
+      "function_count": 4,
+      "class_count": 0
+    },
+    {
+      "id": "module::models",
+      "label": "models",
+      "type": "module",
+      "name": "models",
+      "file": "models.py",
+      "folder": "",
+      "function_count": 14,
+      "class_count": 3
+    },
+    {
+      "id": "module::services",
+      "label": "services",
+      "type": "module",
+      "name": "services",
+      "file": "services.py",
+      "folder": "",
+      "function_count": 10,
+      "class_count": 2
+    },
+    {
+      "id": "module::tests",
+      "label": "tests",
+      "type": "module",
+      "name": "tests",
+      "file": "tests\\__init__.py",
+      "folder": "tests",
+      "function_count": 0,
+      "class_count": 0
+    },
+    {
+      "id": "module::tests.test_models",
+      "label": "test_models",
+      "type": "module",
+      "name": "tests.test_models",
+      "file": "tests\\test_models.py",
+      "folder": "tests",
+      "function_count": 3,
+      "class_count": 0
+    },
+    {
+      "id": "module::tests.test_services",
+      "label": "test_services",
+      "type": "module",
+      "name": "tests.test_services",
+      "file": "tests\\test_services.py",
+      "folder": "tests",
+      "function_count": 2,
+      "class_count": 0
+    },
+    {
+      "id": "module::tests.test_utils",
+      "label": "test_utils",
+      "type": "module",
+      "name": "tests.test_utils",
+      "file": "tests\\test_utils.py",
+      "folder": "tests",
+      "function_count": 3,
+      "class_count": 0
+    },
+    {
+      "id": "module::utils",
+      "label": "utils",
+      "type": "module",
+      "name": "utils",
+      "file": "utils.py",
+      "folder": "",
+      "function_count": 6,
+      "class_count": 0
+    },
+    {
+      "id": "main.py::create_sample_data",
+      "label": "create_sample_data",
+      "type": "function",
+      "file": "main.py",
+      "module": "main",
+      "folder": "",
+      "line": 11,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 2,
+      "called_by_count": 2,
+      "class": null
+    },
+    {
+      "id": "main.py::process_sample_order",
+      "label": "process_sample_order",
+      "type": "function",
+      "file": "main.py",
+      "module": "main",
+      "folder": "",
+      "line": 27,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 8,
+      "called_by_count": 1,
+      "class": null
+    },
+    {
+      "id": "main.py::demonstrate_user_statistics",
+      "label": "demonstrate_user_statistics",
+      "type": "function",
+      "file": "main.py",
+      "module": "main",
+      "folder": "",
+      "line": 56,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 10,
+      "called_by_count": 1,
+      "class": null
+    },
+    {
+      "id": "main.py::main",
+      "label": "main",
+      "type": "function",
+      "file": "main.py",
+      "module": "main",
+      "folder": "",
+      "line": 76,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 4,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "models.py::Product.__init__",
+      "label": "__init__",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 12,
+      "parameters": [
+        "self",
+        "product_id: int",
+        "name: str",
+        "price: float",
+        "stock: int"
+      ],
+      "parameter_count": 5,
+      "has_docstring": false,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": "Product"
+    },
+    {
+      "id": "models.py::Product.is_available",
+      "label": "is_available",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 19,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 1,
+      "class": "Product"
+    },
+    {
+      "id": "models.py::Product.reduce_stock",
+      "label": "reduce_stock",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 23,
+      "parameters": [
+        "self",
+        "quantity: int"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 1,
+      "class": "Product"
+    },
+    {
+      "id": "models.py::Product.get_price",
+      "label": "get_price",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 30,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "Product"
+    },
+    {
+      "id": "models.py::Product.update_price",
+      "label": "update_price",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 34,
+      "parameters": [
+        "self",
+        "new_price: float"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "Product"
+    },
+    {
+      "id": "models.py::User.__init__",
+      "label": "__init__",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 43,
+      "parameters": [
+        "self",
+        "user_id: int",
+        "email: str",
+        "name: str"
+      ],
+      "parameter_count": 4,
+      "has_docstring": false,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "User"
+    },
+    {
+      "id": "models.py::User.add_order",
+      "label": "add_order",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 49,
+      "parameters": [
+        "self",
+        "order: 'Order'"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "User"
+    },
+    {
+      "id": "models.py::User.get_total_spent",
+      "label": "get_total_spent",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 53,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": "User"
+    },
+    {
+      "id": "models.py::User.get_order_count",
+      "label": "get_order_count",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 60,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": "User"
+    },
+    {
+      "id": "models.py::Order.__init__",
+      "label": "__init__",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 68,
+      "parameters": [
+        "self",
+        "order_id: int",
+        "user: User"
+      ],
+      "parameter_count": 3,
+      "has_docstring": false,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": "Order"
+    },
+    {
+      "id": "models.py::Order.add_item",
+      "label": "add_item",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 75,
+      "parameters": [
+        "self",
+        "product: Product",
+        "quantity: int"
+      ],
+      "parameter_count": 3,
+      "has_docstring": true,
+      "call_count": 2,
+      "called_by_count": 0,
+      "class": "Order"
+    },
+    {
+      "id": "models.py::Order.get_total",
+      "label": "get_total",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 82,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 1,
+      "class": "Order"
+    },
+    {
+      "id": "models.py::Order.complete",
+      "label": "complete",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 87,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "Order"
+    },
+    {
+      "id": "models.py::Order.cancel",
+      "label": "cancel",
+      "type": "method",
+      "file": "models.py",
+      "module": "models",
+      "folder": "",
+      "line": 92,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "Order"
+    },
+    {
+      "id": "services.py::OrderService.__init__",
+      "label": "__init__",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 13,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": false,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "OrderService"
+    },
+    {
+      "id": "services.py::OrderService.create_order",
+      "label": "create_order",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 16,
+      "parameters": [
+        "self",
+        "user: User",
+        "items: list[tuple[Product, int]]"
+      ],
+      "parameter_count": 3,
+      "has_docstring": true,
+      "call_count": 4,
+      "called_by_count": 0,
+      "class": "OrderService"
+    },
+    {
+      "id": "services.py::OrderService.process_order",
+      "label": "process_order",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 30,
+      "parameters": [
+        "self",
+        "order: Order"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 4,
+      "called_by_count": 0,
+      "class": "OrderService"
+    },
+    {
+      "id": "services.py::OrderService.get_order_by_id",
+      "label": "get_order_by_id",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 42,
+      "parameters": [
+        "self",
+        "order_id: int"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "OrderService"
+    },
+    {
+      "id": "services.py::OrderService.get_user_orders",
+      "label": "get_user_orders",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 49,
+      "parameters": [
+        "self",
+        "user: User"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "OrderService"
+    },
+    {
+      "id": "services.py::PaymentService.__init__",
+      "label": "__init__",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 57,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": false,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "PaymentService"
+    },
+    {
+      "id": "services.py::PaymentService.process_payment",
+      "label": "process_payment",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 60,
+      "parameters": [
+        "self",
+        "user: User",
+        "amount: float"
+      ],
+      "parameter_count": 3,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 1,
+      "class": "PaymentService"
+    },
+    {
+      "id": "services.py::PaymentService._validate_payment",
+      "label": "_validate_payment",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 71,
+      "parameters": [
+        "self",
+        "user: User",
+        "amount: float"
+      ],
+      "parameter_count": 3,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 1,
+      "class": "PaymentService"
+    },
+    {
+      "id": "services.py::PaymentService.get_total_revenue",
+      "label": "get_total_revenue",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 82,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": "PaymentService"
+    },
+    {
+      "id": "services.py::PaymentService.get_payment_count",
+      "label": "get_payment_count",
+      "type": "method",
+      "file": "services.py",
+      "module": "services",
+      "folder": "",
+      "line": 89,
+      "parameters": [
+        "self"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": "PaymentService"
+    },
+    {
+      "id": "tests\\test_models.py::test_product_creation",
+      "label": "test_product_creation",
+      "type": "function",
+      "file": "tests\\test_models.py",
+      "module": "tests.test_models",
+      "folder": "tests",
+      "line": 8,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 3,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_models.py::test_user_operations",
+      "label": "test_user_operations",
+      "type": "function",
+      "file": "tests\\test_models.py",
+      "module": "tests.test_models",
+      "folder": "tests",
+      "line": 15,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 3,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_models.py::test_order_processing",
+      "label": "test_order_processing",
+      "type": "function",
+      "file": "tests\\test_models.py",
+      "module": "tests.test_models",
+      "folder": "tests",
+      "line": 22,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 5,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_services.py::test_order_service",
+      "label": "test_order_service",
+      "type": "function",
+      "file": "tests\\test_services.py",
+      "module": "tests.test_services",
+      "folder": "tests",
+      "line": 10,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 4,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_services.py::test_payment_service",
+      "label": "test_payment_service",
+      "type": "function",
+      "file": "tests\\test_services.py",
+      "module": "tests.test_services",
+      "folder": "tests",
+      "line": 21,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 4,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_utils.py::test_email_validation",
+      "label": "test_email_validation",
+      "type": "function",
+      "file": "tests\\test_utils.py",
+      "module": "tests.test_utils",
+      "folder": "tests",
+      "line": 9,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_utils.py::test_calculate_total",
+      "label": "test_calculate_total",
+      "type": "function",
+      "file": "tests\\test_utils.py",
+      "module": "tests.test_utils",
+      "folder": "tests",
+      "line": 16,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 2,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "tests\\test_utils.py::test_discount_calculation",
+      "label": "test_discount_calculation",
+      "type": "function",
+      "file": "tests\\test_utils.py",
+      "module": "tests.test_utils",
+      "folder": "tests",
+      "line": 26,
+      "parameters": [],
+      "parameter_count": 0,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "utils.py::validate_email",
+      "label": "validate_email",
+      "type": "function",
+      "file": "utils.py",
+      "module": "utils",
+      "folder": "",
+      "line": 10,
+      "parameters": [
+        "email: str"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 3,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "utils.py::calculate_total",
+      "label": "calculate_total",
+      "type": "function",
+      "file": "utils.py",
+      "module": "utils",
+      "folder": "",
+      "line": 19,
+      "parameters": [
+        "items: List[Tuple[Product, int]]"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 1,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "utils.py::format_currency",
+      "label": "format_currency",
+      "type": "function",
+      "file": "utils.py",
+      "module": "utils",
+      "folder": "",
+      "line": 28,
+      "parameters": [
+        "amount: float"
+      ],
+      "parameter_count": 1,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 0,
+      "class": null
+    },
+    {
+      "id": "utils.py::apply_discount",
+      "label": "apply_discount",
+      "type": "function",
+      "file": "utils.py",
+      "module": "utils",
+      "folder": "",
+      "line": 33,
+      "parameters": [
+        "amount: float",
+        "discount_percent: float"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 1,
+      "class": null
+    },
+    {
+      "id": "utils.py::calculate_tax",
+      "label": "calculate_tax",
+      "type": "function",
+      "file": "utils.py",
+      "module": "utils",
+      "folder": "",
+      "line": 42,
+      "parameters": [
+        "amount: float",
+        "tax_rate: float"
+      ],
+      "parameter_count": 2,
+      "has_docstring": true,
+      "call_count": 0,
+      "called_by_count": 1,
+      "class": null
+    },
+    {
+      "id": "utils.py::get_final_price",
+      "label": "get_final_price",
+      "type": "function",
+      "file": "utils.py",
+      "module": "utils",
+      "folder": "",
+      "line": 47,
+      "parameters": [
+        "amount: float",
+        "discount: float",
+        "tax_rate: float"
+      ],
+      "parameter_count": 3,
+      "has_docstring": true,
+      "call_count": 2,
+      "called_by_count": 0,
+      "class": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "folder::tests",
+      "target": "file::tests\\test_models.py",
+      "type": "contains",
+      "relationship": "folder_contains_file"
+    },
+    {
+      "source": "folder::tests",
+      "target": "file::tests\\test_services.py",
+      "type": "contains",
+      "relationship": "folder_contains_file"
+    },
+    {
+      "source": "folder::tests",
+      "target": "file::tests\\test_utils.py",
+      "type": "contains",
+      "relationship": "folder_contains_file"
+    },
+    {
+      "source": "folder::tests",
+      "target": "file::tests\\__init__.py",
+      "type": "contains",
+      "relationship": "folder_contains_file"
+    },
+    {
+      "source": "file::.gitignore",
+      "target": "module::None",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::config.yaml",
+      "target": "module::None",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::main.py",
+      "target": "module::main",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::models.py",
+      "target": "module::models",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::services.py",
+      "target": "module::services",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::tests\\test_models.py",
+      "target": "module::tests.test_models",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::tests\\test_services.py",
+      "target": "module::tests.test_services",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::tests\\test_utils.py",
+      "target": "module::tests.test_utils",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::tests\\__init__.py",
+      "target": "module::tests",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::utils.py",
+      "target": "module::utils",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "file::__init__.py",
+      "target": "module::__init__",
+      "type": "defines",
+      "relationship": "file_defines_module"
+    },
+    {
+      "source": "module::main",
+      "target": "main.py::create_sample_data",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::main",
+      "target": "main.py::process_sample_order",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::main",
+      "target": "main.py::demonstrate_user_statistics",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::main",
+      "target": "main.py::main",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Product.__init__",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Product.is_available",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Product.reduce_stock",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Product.get_price",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Product.update_price",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::User.__init__",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::User.add_order",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::User.get_total_spent",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::User.get_order_count",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Order.__init__",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Order.add_item",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Order.get_total",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Order.complete",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::models",
+      "target": "models.py::Order.cancel",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::OrderService.__init__",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::OrderService.create_order",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::OrderService.process_order",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::OrderService.get_order_by_id",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::OrderService.get_user_orders",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::PaymentService.__init__",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::PaymentService.process_payment",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::PaymentService._validate_payment",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::PaymentService.get_total_revenue",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::services",
+      "target": "services.py::PaymentService.get_payment_count",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_models",
+      "target": "tests\\test_models.py::test_product_creation",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_models",
+      "target": "tests\\test_models.py::test_user_operations",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_models",
+      "target": "tests\\test_models.py::test_order_processing",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_services",
+      "target": "tests\\test_services.py::test_order_service",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_services",
+      "target": "tests\\test_services.py::test_payment_service",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_utils",
+      "target": "tests\\test_utils.py::test_email_validation",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_utils",
+      "target": "tests\\test_utils.py::test_calculate_total",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::tests.test_utils",
+      "target": "tests\\test_utils.py::test_discount_calculation",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::utils",
+      "target": "utils.py::validate_email",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::utils",
+      "target": "utils.py::calculate_total",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::utils",
+      "target": "utils.py::format_currency",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::utils",
+      "target": "utils.py::apply_discount",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::utils",
+      "target": "utils.py::calculate_tax",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "module::utils",
+      "target": "utils.py::get_final_price",
+      "type": "contains",
+      "relationship": "module_contains_function"
+    },
+    {
+      "source": "folder::",
+      "target": "folder::tests",
+      "type": "contains",
+      "relationship": "folder_contains_folder"
+    },
+    {
+      "source": "main.py::process_sample_order",
+      "target": "main.py::create_sample_data",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "main.py::demonstrate_user_statistics",
+      "target": "main.py::create_sample_data",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "main.py::main",
+      "target": "main.py::demonstrate_user_statistics",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "main.py::main",
+      "target": "main.py::process_sample_order",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "services.py::PaymentService.process_payment",
+      "target": "services.py::PaymentService._validate_payment",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "utils.py::get_final_price",
+      "target": "utils.py::apply_discount",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "utils.py::get_final_price",
+      "target": "utils.py::calculate_tax",
+      "type": "calls",
+      "relationship": "function_call"
+    },
+    {
+      "source": "main.py::process_sample_order",
+      "target": "main.py::create_sample_data",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "main.py::demonstrate_user_statistics",
+      "target": "main.py::create_sample_data",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "main.py::main",
+      "target": "main.py::process_sample_order",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "main.py::main",
+      "target": "main.py::demonstrate_user_statistics",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "models.py::Order.add_item",
+      "target": "models.py::Product.is_available",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "models.py::Order.add_item",
+      "target": "models.py::Product.reduce_stock",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "models.py::User.get_total_spent",
+      "target": "models.py::Order.get_total",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "services.py::OrderService.process_order",
+      "target": "services.py::PaymentService.process_payment",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "services.py::PaymentService.process_payment",
+      "target": "services.py::PaymentService._validate_payment",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "utils.py::get_final_price",
+      "target": "utils.py::apply_discount",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "utils.py::get_final_price",
+      "target": "utils.py::calculate_tax",
+      "type": "called_by",
+      "relationship": "dependency"
+    },
+    {
+      "source": "file::main.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Product",
+        "User",
+        "Order"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::main",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Product",
+        "User",
+        "Order"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::main.py",
+      "target": "file::services.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "OrderService",
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::main",
+      "target": "module::services",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "OrderService",
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::main.py",
+      "target": "file::utils.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "validate_email",
+        "calculate_total",
+        "format_currency",
+        "get_final_price"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::main",
+      "target": "module::utils",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "validate_email",
+        "calculate_total",
+        "format_currency",
+        "get_final_price"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::models.py",
+      "target": "file::utils.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "calculate_total"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::models",
+      "target": "module::utils",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "calculate_total"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::services.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Order",
+        "User",
+        "Product"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::services",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Order",
+        "User",
+        "Product"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::services.py",
+      "target": "file::utils.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "validate_email",
+        "calculate_total"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::services",
+      "target": "module::utils",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "validate_email",
+        "calculate_total"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::services.py",
+      "target": "file::services.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::services",
+      "target": "module::services",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::tests\\test_models.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Product",
+        "User",
+        "Order"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::tests.test_models",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Product",
+        "User",
+        "Order"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::tests\\test_services.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Product",
+        "User"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::tests.test_services",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Product",
+        "User"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::tests\\test_services.py",
+      "target": "file::services.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "OrderService",
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::tests.test_services",
+      "target": "module::services",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "OrderService",
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::tests\\test_services.py",
+      "target": "file::utils.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "validate_email"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::tests.test_services",
+      "target": "module::utils",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "validate_email"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::tests\\test_utils.py",
+      "target": "file::utils.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "validate_email",
+        "calculate_total",
+        "apply_discount"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::tests.test_utils",
+      "target": "module::utils",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "validate_email",
+        "calculate_total",
+        "apply_discount"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::tests\\test_utils.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Product"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::tests.test_utils",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Product"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::utils.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Product"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::utils",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Product"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::__init__.py",
+      "target": "file::models.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "Product",
+        "User",
+        "Order"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::__init__",
+      "target": "module::models",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "Product",
+        "User",
+        "Order"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::__init__.py",
+      "target": "file::services.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "OrderService",
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::__init__",
+      "target": "module::services",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "OrderService",
+        "PaymentService"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "file::__init__.py",
+      "target": "file::utils.py",
+      "type": "imports",
+      "relationship": "file_imports_from_file",
+      "imports": [
+        "validate_email",
+        "calculate_total"
+      ],
+      "is_relative": true
+    },
+    {
+      "source": "module::__init__",
+      "target": "module::utils",
+      "type": "imports",
+      "relationship": "module_imports_from_module",
+      "imports": [
+        "validate_email",
+        "calculate_total"
+      ],
+      "is_relative": true
+    }
+  ],
+  "summary": {
+    "total_folders": 1,
+    "total_files": 7,
+    "total_modules": 9,
+    "total_functions": 42,
+    "total_classes": 5,
+    "total_parameters": 57,
+    "functions_with_docstrings": 37,
+    "functions_that_call_others": 26,
+    "functions_that_are_called": 10,
+    "average_parameters_per_function": 1.3571428571428572
+  },
+  "hierarchy": {
+    "folders": {
+      "": {
+        "path": "",
+        "files": [
+          ".gitignore",
+          "config.yaml",
+          "main.py",
+          "models.py",
+          "services.py",
+          "utils.py",
+          "__init__.py"
+        ],
+        "subfolders": [
+          "tests"
+        ]
+      },
+      "tests": {
+        "path": "tests",
+        "files": [
+          "tests\\test_models.py",
+          "tests\\test_services.py",
+          "tests\\test_utils.py",
+          "tests\\__init__.py"
+        ],
+        "subfolders": []
+      }
+    },
+    "files": {
+      ".gitignore": {
+        "path": ".gitignore",
+        "name": ".gitignore",
+        "extension": "",
+        "module": null,
+        "folder": "",
+        "functions": [],
+        "is_python": false
+      },
+      "config.yaml": {
+        "path": "config.yaml",
+        "name": "config.yaml",
+        "extension": ".yaml",
+        "module": null,
+        "folder": "",
+        "functions": [],
+        "is_python": false
+      },
+      "main.py": {
+        "path": "main.py",
+        "name": "main.py",
+        "extension": ".py",
+        "module": "main",
+        "folder": "",
+        "functions": [
+          "main.py::create_sample_data",
+          "main.py::process_sample_order",
+          "main.py::demonstrate_user_statistics",
+          "main.py::main"
+        ],
+        "is_python": true
+      },
+      "models.py": {
+        "path": "models.py",
+        "name": "models.py",
+        "extension": ".py",
+        "module": "models",
+        "folder": "",
+        "functions": [
+          "models.py::Product.__init__",
+          "models.py::Product.is_available",
+          "models.py::Product.reduce_stock",
+          "models.py::Product.get_price",
+          "models.py::Product.update_price",
+          "models.py::User.__init__",
+          "models.py::User.add_order",
+          "models.py::User.get_total_spent",
+          "models.py::User.get_order_count",
+          "models.py::Order.__init__",
+          "models.py::Order.add_item",
+          "models.py::Order.get_total",
+          "models.py::Order.complete",
+          "models.py::Order.cancel"
+        ],
+        "is_python": true
+      },
+      "services.py": {
+        "path": "services.py",
+        "name": "services.py",
+        "extension": ".py",
+        "module": "services",
+        "folder": "",
+        "functions": [
+          "services.py::OrderService.__init__",
+          "services.py::OrderService.create_order",
+          "services.py::OrderService.process_order",
+          "services.py::OrderService.get_order_by_id",
+          "services.py::OrderService.get_user_orders",
+          "services.py::PaymentService.__init__",
+          "services.py::PaymentService.process_payment",
+          "services.py::PaymentService._validate_payment",
+          "services.py::PaymentService.get_total_revenue",
+          "services.py::PaymentService.get_payment_count"
+        ],
+        "is_python": true
+      },
+      "tests\\test_models.py": {
+        "path": "tests\\test_models.py",
+        "name": "test_models.py",
+        "extension": ".py",
+        "module": "tests.test_models",
+        "folder": "tests",
+        "functions": [
+          "tests\\test_models.py::test_product_creation",
+          "tests\\test_models.py::test_user_operations",
+          "tests\\test_models.py::test_order_processing"
+        ],
+        "is_python": true
+      },
+      "tests\\test_services.py": {
+        "path": "tests\\test_services.py",
+        "name": "test_services.py",
+        "extension": ".py",
+        "module": "tests.test_services",
+        "folder": "tests",
+        "functions": [
+          "tests\\test_services.py::test_order_service",
+          "tests\\test_services.py::test_payment_service"
+        ],
+        "is_python": true
+      },
+      "tests\\test_utils.py": {
+        "path": "tests\\test_utils.py",
+        "name": "test_utils.py",
+        "extension": ".py",
+        "module": "tests.test_utils",
+        "folder": "tests",
+        "functions": [
+          "tests\\test_utils.py::test_email_validation",
+          "tests\\test_utils.py::test_calculate_total",
+          "tests\\test_utils.py::test_discount_calculation"
+        ],
+        "is_python": true
+      },
+      "tests\\__init__.py": {
+        "path": "tests\\__init__.py",
+        "name": "__init__.py",
+        "extension": ".py",
+        "module": "tests",
+        "folder": "tests",
+        "functions": [],
+        "is_python": true
+      },
+      "utils.py": {
+        "path": "utils.py",
+        "name": "utils.py",
+        "extension": ".py",
+        "module": "utils",
+        "folder": "",
+        "functions": [
+          "utils.py::validate_email",
+          "utils.py::calculate_total",
+          "utils.py::format_currency",
+          "utils.py::apply_discount",
+          "utils.py::calculate_tax",
+          "utils.py::get_final_price"
+        ],
+        "is_python": true
+      },
+      "__init__.py": {
+        "path": "__init__.py",
+        "name": "__init__.py",
+        "extension": ".py",
+        "module": "__init__",
+        "folder": "",
+        "functions": [],
+        "is_python": true
+      }
+    },
+    "modules": {
+      "main": {
+        "name": "main",
+        "file": "main.py",
+        "folder": "",
+        "functions": [
+          "main.py::create_sample_data",
+          "main.py::process_sample_order",
+          "main.py::demonstrate_user_statistics",
+          "main.py::main"
+        ],
+        "classes": []
+      },
+      "models": {
+        "name": "models",
+        "file": "models.py",
+        "folder": "",
+        "functions": [
+          "models.py::Product.__init__",
+          "models.py::Product.is_available",
+          "models.py::Product.reduce_stock",
+          "models.py::Product.get_price",
+          "models.py::Product.update_price",
+          "models.py::User.__init__",
+          "models.py::User.add_order",
+          "models.py::User.get_total_spent",
+          "models.py::User.get_order_count",
+          "models.py::Order.__init__",
+          "models.py::Order.add_item",
+          "models.py::Order.get_total",
+          "models.py::Order.complete",
+          "models.py::Order.cancel"
+        ],
+        "classes": [
+          "models.py::Product",
+          "models.py::User",
+          "models.py::Order"
+        ]
+      },
+      "services": {
+        "name": "services",
+        "file": "services.py",
+        "folder": "",
+        "functions": [
+          "services.py::OrderService.__init__",
+          "services.py::OrderService.create_order",
+          "services.py::OrderService.process_order",
+          "services.py::OrderService.get_order_by_id",
+          "services.py::OrderService.get_user_orders",
+          "services.py::PaymentService.__init__",
+          "services.py::PaymentService.process_payment",
+          "services.py::PaymentService._validate_payment",
+          "services.py::PaymentService.get_total_revenue",
+          "services.py::PaymentService.get_payment_count"
+        ],
+        "classes": [
+          "services.py::OrderService",
+          "services.py::PaymentService"
+        ]
+      },
+      "tests.test_models": {
+        "name": "tests.test_models",
+        "file": "tests\\test_models.py",
+        "folder": "tests",
+        "functions": [
+          "tests\\test_models.py::test_product_creation",
+          "tests\\test_models.py::test_user_operations",
+          "tests\\test_models.py::test_order_processing"
+        ],
+        "classes": []
+      },
+      "tests.test_services": {
+        "name": "tests.test_services",
+        "file": "tests\\test_services.py",
+        "folder": "tests",
+        "functions": [
+          "tests\\test_services.py::test_order_service",
+          "tests\\test_services.py::test_payment_service"
+        ],
+        "classes": []
+      },
+      "tests.test_utils": {
+        "name": "tests.test_utils",
+        "file": "tests\\test_utils.py",
+        "folder": "tests",
+        "functions": [
+          "tests\\test_utils.py::test_email_validation",
+          "tests\\test_utils.py::test_calculate_total",
+          "tests\\test_utils.py::test_discount_calculation"
+        ],
+        "classes": []
+      },
+      "tests": {
+        "name": "tests",
+        "file": "tests\\__init__.py",
+        "folder": "tests",
+        "functions": [],
+        "classes": []
+      },
+      "utils": {
+        "name": "utils",
+        "file": "utils.py",
+        "folder": "",
+        "functions": [
+          "utils.py::validate_email",
+          "utils.py::calculate_total",
+          "utils.py::format_currency",
+          "utils.py::apply_discount",
+          "utils.py::calculate_tax",
+          "utils.py::get_final_price"
+        ],
+        "classes": []
+      },
+      "__init__": {
+        "name": "__init__",
+        "file": "__init__.py",
+        "folder": "",
+        "functions": [],
+        "classes": []
+      }
+    }
+  },
+  "imports": {
+    "main.py": [
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Product",
+          "User",
+          "Order"
+        ],
+        "is_relative": true,
+        "line": 6
+      },
+      {
+        "from": "services",
+        "resolved_module": "services",
+        "imports": [
+          "OrderService",
+          "PaymentService"
+        ],
+        "is_relative": true,
+        "line": 7
+      },
+      {
+        "from": "utils",
+        "resolved_module": "utils",
+        "imports": [
+          "validate_email",
+          "calculate_total",
+          "format_currency",
+          "get_final_price"
+        ],
+        "is_relative": true,
+        "line": 8
+      }
+    ],
+    "models.py": [
+      {
+        "from": "typing",
+        "resolved_module": "typing",
+        "imports": [
+          "List",
+          "Optional"
+        ],
+        "is_relative": false,
+        "line": 5
+      },
+      {
+        "from": "datetime",
+        "resolved_module": "datetime",
+        "imports": [
+          "datetime"
+        ],
+        "is_relative": false,
+        "line": 6
+      },
+      {
+        "from": "utils",
+        "resolved_module": "utils",
+        "imports": [
+          "calculate_total"
+        ],
+        "is_relative": true,
+        "line": 84
+      }
+    ],
+    "services.py": [
+      {
+        "from": "typing",
+        "resolved_module": "typing",
+        "imports": [
+          "Optional"
+        ],
+        "is_relative": false,
+        "line": 5
+      },
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Order",
+          "User",
+          "Product"
+        ],
+        "is_relative": true,
+        "line": 6
+      },
+      {
+        "from": "utils",
+        "resolved_module": "utils",
+        "imports": [
+          "validate_email",
+          "calculate_total"
+        ],
+        "is_relative": true,
+        "line": 7
+      },
+      {
+        "from": "services",
+        "resolved_module": "services",
+        "imports": [
+          "PaymentService"
+        ],
+        "is_relative": true,
+        "line": 32
+      }
+    ],
+    "tests\\test_models.py": [
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Product",
+          "User",
+          "Order"
+        ],
+        "is_relative": true,
+        "line": 5
+      }
+    ],
+    "tests\\test_services.py": [
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Product",
+          "User"
+        ],
+        "is_relative": true,
+        "line": 5
+      },
+      {
+        "from": "services",
+        "resolved_module": "services",
+        "imports": [
+          "OrderService",
+          "PaymentService"
+        ],
+        "is_relative": true,
+        "line": 6
+      },
+      {
+        "from": "utils",
+        "resolved_module": "utils",
+        "imports": [
+          "validate_email"
+        ],
+        "is_relative": true,
+        "line": 7
+      }
+    ],
+    "tests\\test_utils.py": [
+      {
+        "from": "utils",
+        "resolved_module": "utils",
+        "imports": [
+          "validate_email",
+          "calculate_total",
+          "apply_discount"
+        ],
+        "is_relative": true,
+        "line": 5
+      },
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Product"
+        ],
+        "is_relative": true,
+        "line": 6
+      }
+    ],
+    "utils.py": [
+      {
+        "from": "re",
+        "imports": [
+          "re"
+        ],
+        "is_relative": false,
+        "line": 5
+      },
+      {
+        "from": "typing",
+        "resolved_module": "typing",
+        "imports": [
+          "List",
+          "Tuple"
+        ],
+        "is_relative": false,
+        "line": 6
+      },
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Product"
+        ],
+        "is_relative": true,
+        "line": 7
+      }
+    ],
+    "__init__.py": [
+      {
+        "from": "models",
+        "resolved_module": "models",
+        "imports": [
+          "Product",
+          "User",
+          "Order"
+        ],
+        "is_relative": true,
+        "line": 6
+      },
+      {
+        "from": "services",
+        "resolved_module": "services",
+        "imports": [
+          "OrderService",
+          "PaymentService"
+        ],
+        "is_relative": true,
+        "line": 7
+      },
+      {
+        "from": "utils",
+        "resolved_module": "utils",
+        "imports": [
+          "validate_email",
+          "calculate_total"
+        ],
+        "is_relative": true,
+        "line": 8
+      }
+    ]
+  }
+}

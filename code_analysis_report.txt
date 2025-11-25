@@ -1,0 +1,335 @@
+================================================================================
+PYTHON CODE ANALYSIS REPORT
+================================================================================
+
+SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+Total Folders:               1
+Total Files Analyzed:        7
+Total Modules:               9
+Total Functions:             42
+Total Classes:               5
+Total Parameters:            57
+Functions with Docstrings:   37
+Functions Calling Others:    26
+Functions Being Called:      10
+Avg Parameters per Function: 1.36
+
+PROJECT HIERARCHY
+--------------------------------------------------------------------------------
+📁 ROOT/ (7 files, 1 subfolders)
+  📄 .gitignore (no extension)
+  🐍 __init__.py (Python - module: __init__, 0 functions)
+  📄 config.yaml (.yaml)
+  🐍 main.py (Python - module: main, 4 functions)
+  🐍 models.py (Python - module: models, 14 functions)
+       └─ Module: models (3 classes)
+  🐍 services.py (Python - module: services, 10 functions)
+       └─ Module: services (2 classes)
+  🐍 utils.py (Python - module: utils, 6 functions)
+  📁 tests/ (4 files, 0 subfolders)
+    🐍 __init__.py (Python - module: tests, 0 functions)
+    🐍 test_models.py (Python - module: tests.test_models, 3 functions)
+    🐍 test_services.py (Python - module: tests.test_services, 2 functions)
+    🐍 test_utils.py (Python - module: tests.test_utils, 3 functions)
+
+MOST DEPENDED-UPON FUNCTIONS (High Coupling)
+--------------------------------------------------------------------------------
+1. create_sample_data (in main.py)
+   Module: main
+   Called by 2 functions
+
+2. process_sample_order (in main.py)
+   Module: main
+   Called by 1 functions
+
+3. demonstrate_user_statistics (in main.py)
+   Module: main
+   Called by 1 functions
+
+4. is_available (in models.py)
+   Module: models
+   Called by 1 functions
+   Class: Product
+
+5. reduce_stock (in models.py)
+   Module: models
+   Called by 1 functions
+   Class: Product
+
+6. get_total (in models.py)
+   Module: models
+   Called by 1 functions
+   Class: Order
+
+7. process_payment (in services.py)
+   Module: services
+   Called by 1 functions
+   Class: PaymentService
+
+8. _validate_payment (in services.py)
+   Module: services
+   Called by 1 functions
+   Class: PaymentService
+
+9. apply_discount (in utils.py)
+   Module: utils
+   Called by 1 functions
+
+10. calculate_tax (in utils.py)
+   Module: utils
+   Called by 1 functions
+
+FUNCTIONS WITH MOST CALLS (Complexity Indicators)
+--------------------------------------------------------------------------------
+1. demonstrate_user_statistics (in main.py)
+   Module: main
+   Calls 10 other functions
+
+2. process_sample_order (in main.py)
+   Module: main
+   Calls 8 other functions
+
+3. test_order_processing (in tests\test_models.py)
+   Module: tests.test_models
+   Calls 5 other functions
+
+4. main (in main.py)
+   Module: main
+   Calls 4 other functions
+
+5. create_order (in services.py)
+   Module: services
+   Calls 4 other functions
+   Class: OrderService
+
+6. process_order (in services.py)
+   Module: services
+   Calls 4 other functions
+   Class: OrderService
+
+7. test_order_service (in tests\test_services.py)
+   Module: tests.test_services
+   Calls 4 other functions
+
+8. test_payment_service (in tests\test_services.py)
+   Module: tests.test_services
+   Calls 4 other functions
+
+9. test_product_creation (in tests\test_models.py)
+   Module: tests.test_models
+   Calls 3 other functions
+
+10. test_user_operations (in tests\test_models.py)
+   Module: tests.test_models
+   Calls 3 other functions
+
+FUNCTIONS BY FOLDER / FILE / MODULE
+--------------------------------------------------------------------------------
+
+📁 ROOT/
+  📄 .gitignore (no extension)
+  🐍 __init__.py (Python)
+       Module: __init__
+  📄 config.yaml (.yaml)
+  🐍 main.py (Python)
+       Module: main
+        • create_sample_data (function)
+            Called by: 2 functions
+            Calls: 2 functions
+        • process_sample_order (function)
+            Called by: 1 functions
+            Calls: 8 functions
+        • demonstrate_user_statistics (function)
+            Called by: 1 functions
+            Calls: 10 functions
+        • main (function)
+            Calls: 4 functions
+  🐍 models.py (Python)
+       Module: models
+        • Product.__init__ (method)
+            Params: self, product_id: int, ... (+3 more)
+            Calls: 1 functions
+        • Product.is_available (method)
+            Params: self
+            Called by: 1 functions
+        • Product.reduce_stock (method)
+            Params: self, quantity: int
+            Called by: 1 functions
+        • Product.get_price (method)
+            Params: self
+        • Product.update_price (method)
+            Params: self, new_price: float
+        • User.__init__ (method)
+            Params: self, user_id: int, ... (+2 more)
+        • User.add_order (method)
+            Params: self, order: 'Order'
+        • User.get_total_spent (method)
+            Params: self
+            Calls: 1 functions
+        • User.get_order_count (method)
+            Params: self
+            Calls: 1 functions
+        • Order.__init__ (method)
+            Params: self, order_id: int, ... (+1 more)
+            Calls: 1 functions
+        • Order.add_item (method)
+            Params: self, product: Product, ... (+1 more)
+            Calls: 2 functions
+        • Order.get_total (method)
+            Params: self
+            Called by: 1 functions
+            Calls: 1 functions
+        • Order.complete (method)
+            Params: self
+        • Order.cancel (method)
+            Params: self
+  🐍 services.py (Python)
+       Module: services
+        • OrderService.__init__ (method)
+            Params: self
+        • OrderService.create_order (method)
+            Params: self, user: User, ... (+1 more)
+            Calls: 4 functions
+        • OrderService.process_order (method)
+            Params: self, order: Order
+            Calls: 4 functions
+        • OrderService.get_order_by_id (method)
+            Params: self, order_id: int
+        • OrderService.get_user_orders (method)
+            Params: self, user: User
+        • PaymentService.__init__ (method)
+            Params: self
+        • PaymentService.process_payment (method)
+            Params: self, user: User, ... (+1 more)
+            Called by: 1 functions
+            Calls: 1 functions
+        • PaymentService._validate_payment (method)
+            Params: self, user: User, ... (+1 more)
+            Called by: 1 functions
+            Calls: 1 functions
+        • PaymentService.get_total_revenue (method)
+            Params: self
+        • PaymentService.get_payment_count (method)
+            Params: self
+            Calls: 1 functions
+  🐍 utils.py (Python)
+       Module: utils
+        • validate_email (function)
+            Params: email: str
+            Calls: 3 functions
+        • calculate_total (function)
+            Params: items: List[Tuple[Product, int]]
+            Calls: 1 functions
+        • format_currency (function)
+            Params: amount: float
+        • apply_discount (function)
+            Params: amount: float, discount_percent: float
+            Called by: 1 functions
+        • calculate_tax (function)
+            Params: amount: float, tax_rate: float
+            Called by: 1 functions
+        • get_final_price (function)
+            Params: amount: float, discount: float, ... (+1 more)
+            Calls: 2 functions
+
+  📁 tests/
+    🐍 __init__.py (Python)
+         Module: tests
+    🐍 test_models.py (Python)
+         Module: tests.test_models
+          • test_product_creation (function)
+              Calls: 3 functions
+          • test_user_operations (function)
+              Calls: 3 functions
+          • test_order_processing (function)
+              Calls: 5 functions
+    🐍 test_services.py (Python)
+         Module: tests.test_services
+          • test_order_service (function)
+              Calls: 4 functions
+          • test_payment_service (function)
+              Calls: 4 functions
+    🐍 test_utils.py (Python)
+         Module: tests.test_utils
+          • test_email_validation (function)
+              Calls: 1 functions
+          • test_calculate_total (function)
+              Calls: 2 functions
+          • test_discount_calculation (function)
+              Calls: 1 functions
+
+IMPORT RELATIONSHIPS
+--------------------------------------------------------------------------------
+
+__init__.py imports:
+  from models import Product, User, Order
+    Type: relative
+  from services import OrderService, PaymentService
+    Type: relative
+  from utils import validate_email, calculate_total
+    Type: relative
+
+main.py imports:
+  from models import Product, User, Order
+    Type: relative
+  from services import OrderService, PaymentService
+    Type: relative
+  from utils import validate_email, calculate_total, format_currency, get_final_price
+    Type: relative
+
+models.py imports:
+  from typing import List, Optional
+    Type: absolute
+  from datetime import datetime
+    Type: absolute
+  from utils import calculate_total
+    Type: relative
+
+services.py imports:
+  from typing import Optional
+    Type: absolute
+  from models import Order, User, Product
+    Type: relative
+  from utils import validate_email, calculate_total
+    Type: relative
+  from services import PaymentService
+    Type: relative
+
+tests\test_models.py imports:
+  from models import Product, User, Order
+    Type: relative
+
+tests\test_services.py imports:
+  from models import Product, User
+    Type: relative
+  from services import OrderService, PaymentService
+    Type: relative
+  from utils import validate_email
+    Type: relative
+
+tests\test_utils.py imports:
+  from utils import validate_email, calculate_total, apply_discount
+    Type: relative
+  from models import Product
+    Type: relative
+
+utils.py imports:
+  from re import re
+    Type: absolute
+  from typing import List, Tuple
+    Type: absolute
+  from models import Product
+    Type: relative
+
+FUNCTION CALL CHAINS (Top 10)
+--------------------------------------------------------------------------------
+1. process_sample_order -> create_sample_data
+2. demonstrate_user_statistics -> create_sample_data
+3. main -> demonstrate_user_statistics
+4. main -> process_sample_order
+5. process_payment -> _validate_payment
+6. get_final_price -> apply_discount
+7. get_final_price -> calculate_tax
+
+================================================================================

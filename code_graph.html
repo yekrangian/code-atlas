@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Function Interaction Graph</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        #mynetwork {
+            width: 100%;
+            height: 800px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+        }
+        .header {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        .stat-item {
+            padding: 10px 15px;
+            border-radius: 4px;
+            border: 2px solid;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .stat-item::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+        .stat-folder {
+            background: #D4E6F1;
+            border-color: #3498DB;
+        }
+        .stat-folder::before {
+            background: #D4E6F1;
+            border: 2px solid #3498DB;
+        }
+        .stat-file {
+            background: #A9DFBF;
+            border-color: #2ECC71;
+        }
+        .stat-file::before {
+            background: #A9DFBF;
+            border: 2px solid #2ECC71;
+        }
+        .stat-module {
+            background: #F9E79F;
+            border-color: #F39C12;
+        }
+        .stat-module::before {
+            background: #F9E79F;
+            border: 2px solid #F39C12;
+        }
+        .stat-function {
+            background: #FFF4E1;
+            border-color: #E67E22;
+        }
+        .stat-function::before {
+            background: #FFF4E1;
+            border: 2px solid #E67E22;
+        }
+        .stat-class {
+            background: #E1F5FF;
+            border-color: #3498DB;
+        }
+        .stat-class::before {
+            background: #E1F5FF;
+            border: 2px solid #3498DB;
+        }
+        .legend-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        .edge-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .edge-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .edge-line {
+            width: 40px;
+            height: 3px;
+            position: relative;
+        }
+        .edge-line-solid {
+            border-top: 3px solid;
+        }
+        .edge-line-dashed {
+            border-top: 3px dashed;
+        }
+        .search-container {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .search-box {
+            flex: 1;
+            padding: 10px 15px;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .search-box:focus {
+            border-color: #3498DB;
+        }
+        .search-button {
+            padding: 10px 20px;
+            background: #3498DB;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .search-button:hover {
+            background: #2980B9;
+        }
+        .search-info {
+            font-size: 12px;
+            color: #666;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Python Code Function Interaction Graph</h1>
+        <div class="stats">
+            <div class="stat-item stat-folder"><strong>📁 Folders:</strong> 1</div>
+            <div class="stat-item stat-file"><strong>📄 Files:</strong> 7</div>
+            <div class="stat-item stat-module"><strong>📦 Modules:</strong> 9</div>
+            <div class="stat-item stat-function"><strong>⚙️ Functions:</strong> 42</div>
+            <div class="stat-item stat-class"><strong>🏛️ Classes:</strong> 5</div>
+        </div>
+        <div class="legend-section">
+            <div class="legend-title">Edge Types (Relationships):</div>
+            <div class="edge-legend">
+                <div class="edge-item">
+                    <div class="edge-line edge-line-solid" style="border-color: #3498DB;"></div>
+                    <span>Folder Contains</span>
+                </div>
+                <div class="edge-item">
+                    <div class="edge-line edge-line-solid" style="border-color: #2ECC71;"></div>
+                    <span>File Defines Module</span>
+                </div>
+                <div class="edge-item">
+                    <div class="edge-line edge-line-solid" style="border-color: #F39C12;"></div>
+                    <span>Module Contains Function</span>
+                </div>
+                <div class="edge-item">
+                    <div class="edge-line edge-line-dashed" style="border-color: #9B59B6;"></div>
+                    <span>Imports</span>
+                </div>
+                <div class="edge-item">
+                    <div class="edge-line edge-line-solid" style="border-color: #848484;"></div>
+                    <span>Function Calls</span>
+                </div>
+                <div class="edge-item">
+                    <div class="edge-line edge-line-dashed" style="border-color: #95A5A6;"></div>
+                    <span>Dependencies</span>
+                </div>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="searchBox" class="search-box" placeholder="Search for functions, files, modules, or folders...">
+            <button onclick="performSearch()" class="search-button">Search</button>
+            <button onclick="clearSearch()" class="search-button" style="background: #95A5A6;">Clear</button>
+            <span id="searchInfo" class="search-info"></span>
+        </div>
+    </div>
+    <div id="mynetwork"></div>
+    <script type="text/javascript">
+        var nodes = new vis.DataSet([{"id": "folder::tests", "label": "tests", "title": "Folder: tests\nFiles: 4\nSubfolders: 0", "color": "#D4E6F1", "shape": "box", "value": 4, "type": "folder"}, {"id": "file::.gitignore", "label": ".gitignore", "title": "File: .gitignore\nType: no extension", "color": "#D5DBDB", "shape": "box", "value": 1, "type": "file"}, {"id": "file::__init__.py", "label": "__init__.py", "title": "File: __init__.py\nType: .py\nModule: __init__\nFunctions: 0", "color": "#A9DFBF", "shape": "box", "value": 1, "type": "file"}, {"id": "file::config.yaml", "label": "config.yaml", "title": "File: config.yaml\nType: .yaml", "color": "#D5DBDB", "shape": "box", "value": 1, "type": "file"}, {"id": "file::main.py", "label": "main.py", "title": "File: main.py\nType: .py\nModule: main\nFunctions: 4", "color": "#A9DFBF", "shape": "box", "value": 4, "type": "file"}, {"id": "file::models.py", "label": "models.py", "title": "File: models.py\nType: .py\nModule: models\nFunctions: 14", "color": "#A9DFBF", "shape": "box", "value": 14, "type": "file"}, {"id": "file::services.py", "label": "services.py", "title": "File: services.py\nType: .py\nModule: services\nFunctions: 10", "color": "#A9DFBF", "shape": "box", "value": 10, "type": "file"}, {"id": "file::tests\\__init__.py", "label": "__init__.py", "title": "File: tests\\__init__.py\nType: .py\nModule: tests\nFunctions: 0", "color": "#A9DFBF", "shape": "box", "value": 1, "type": "file"}, {"id": "file::tests\\test_models.py", "label": "test_models.py", "title": "File: tests\\test_models.py\nType: .py\nModule: tests.test_models\nFunctions: 3", "color": "#A9DFBF", "shape": "box", "value": 3, "type": "file"}, {"id": "file::tests\\test_services.py", "label": "test_services.py", "title": "File: tests\\test_services.py\nType: .py\nModule: tests.test_services\nFunctions: 2", "color": "#A9DFBF", "shape": "box", "value": 2, "type": "file"}, {"id": "file::tests\\test_utils.py", "label": "test_utils.py", "title": "File: tests\\test_utils.py\nType: .py\nModule: tests.test_utils\nFunctions: 3", "color": "#A9DFBF", "shape": "box", "value": 3, "type": "file"}, {"id": "file::utils.py", "label": "utils.py", "title": "File: utils.py\nType: .py\nModule: utils\nFunctions: 6", "color": "#A9DFBF", "shape": "box", "value": 6, "type": "file"}, {"id": "module::__init__", "label": "__init__", "title": "Module: __init__\nFile: __init__.py\nFunctions: 0\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 1, "type": "module"}, {"id": "module::main", "label": "main", "title": "Module: main\nFile: main.py\nFunctions: 4\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 4, "type": "module"}, {"id": "module::models", "label": "models", "title": "Module: models\nFile: models.py\nFunctions: 14\nClasses: 3", "color": "#F9E79F", "shape": "ellipse", "value": 14, "type": "module"}, {"id": "module::services", "label": "services", "title": "Module: services\nFile: services.py\nFunctions: 10\nClasses: 2", "color": "#F9E79F", "shape": "ellipse", "value": 10, "type": "module"}, {"id": "module::tests", "label": "tests", "title": "Module: tests\nFile: tests\\__init__.py\nFunctions: 0\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 1, "type": "module"}, {"id": "module::tests.test_models", "label": "test_models", "title": "Module: tests.test_models\nFile: tests\\test_models.py\nFunctions: 3\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 3, "type": "module"}, {"id": "module::tests.test_services", "label": "test_services", "title": "Module: tests.test_services\nFile: tests\\test_services.py\nFunctions: 2\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 2, "type": "module"}, {"id": "module::tests.test_utils", "label": "test_utils", "title": "Module: tests.test_utils\nFile: tests\\test_utils.py\nFunctions: 3\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 3, "type": "module"}, {"id": "module::utils", "label": "utils", "title": "Module: utils\nFile: utils.py\nFunctions: 6\nClasses: 0", "color": "#F9E79F", "shape": "ellipse", "value": 6, "type": "module"}, {"id": "main.py::create_sample_data", "label": "create_sample_data", "title": "Function: create_sample_data\nFile: main.py\nModule: main\nLine: 11\nParameters: 0\nCalled by: 2 functions\nCalls: 2 functions", "color": "#FFF4E1", "shape": "dot", "value": 2, "type": "function"}, {"id": "main.py::process_sample_order", "label": "process_sample_order", "title": "Function: process_sample_order\nFile: main.py\nModule: main\nLine: 27\nParameters: 0\nCalled by: 1 functions\nCalls: 8 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "main.py::demonstrate_user_statistics", "label": "demonstrate_user_statistics", "title": "Function: demonstrate_user_statistics\nFile: main.py\nModule: main\nLine: 56\nParameters: 0\nCalled by: 1 functions\nCalls: 10 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "main.py::main", "label": "main", "title": "Function: main\nFile: main.py\nModule: main\nLine: 76\nParameters: 0\nCalled by: 0 functions\nCalls: 4 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "models.py::Product.__init__", "label": "Product.__init__", "title": "Function: Product.__init__\nFile: models.py\nModule: models\nLine: 12\nParameters: 5\nCalled by: 0 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 5, "type": "method"}, {"id": "models.py::Product.is_available", "label": "Product.is_available", "title": "Function: Product.is_available\nFile: models.py\nModule: models\nLine: 19\nParameters: 1\nCalled by: 1 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "models.py::Product.reduce_stock", "label": "Product.reduce_stock", "title": "Function: Product.reduce_stock\nFile: models.py\nModule: models\nLine: 23\nParameters: 2\nCalled by: 1 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 2, "type": "method"}, {"id": "models.py::Product.get_price", "label": "Product.get_price", "title": "Function: Product.get_price\nFile: models.py\nModule: models\nLine: 30\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "models.py::Product.update_price", "label": "Product.update_price", "title": "Function: Product.update_price\nFile: models.py\nModule: models\nLine: 34\nParameters: 2\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 2, "type": "method"}, {"id": "models.py::User.__init__", "label": "User.__init__", "title": "Function: User.__init__\nFile: models.py\nModule: models\nLine: 43\nParameters: 4\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 4, "type": "method"}, {"id": "models.py::User.add_order", "label": "User.add_order", "title": "Function: User.add_order\nFile: models.py\nModule: models\nLine: 49\nParameters: 2\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 2, "type": "method"}, {"id": "models.py::User.get_total_spent", "label": "User.get_total_spent", "title": "Function: User.get_total_spent\nFile: models.py\nModule: models\nLine: 53\nParameters: 1\nCalled by: 0 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "models.py::User.get_order_count", "label": "User.get_order_count", "title": "Function: User.get_order_count\nFile: models.py\nModule: models\nLine: 60\nParameters: 1\nCalled by: 0 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "models.py::Order.__init__", "label": "Order.__init__", "title": "Function: Order.__init__\nFile: models.py\nModule: models\nLine: 68\nParameters: 3\nCalled by: 0 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 3, "type": "method"}, {"id": "models.py::Order.add_item", "label": "Order.add_item", "title": "Function: Order.add_item\nFile: models.py\nModule: models\nLine: 75\nParameters: 3\nCalled by: 0 functions\nCalls: 2 functions", "color": "#E1F5FF", "shape": "dot", "value": 3, "type": "method"}, {"id": "models.py::Order.get_total", "label": "Order.get_total", "title": "Function: Order.get_total\nFile: models.py\nModule: models\nLine: 82\nParameters: 1\nCalled by: 1 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "models.py::Order.complete", "label": "Order.complete", "title": "Function: Order.complete\nFile: models.py\nModule: models\nLine: 87\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "models.py::Order.cancel", "label": "Order.cancel", "title": "Function: Order.cancel\nFile: models.py\nModule: models\nLine: 92\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "services.py::OrderService.__init__", "label": "OrderService.__init__", "title": "Function: OrderService.__init__\nFile: services.py\nModule: services\nLine: 13\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "services.py::OrderService.create_order", "label": "OrderService.create_order", "title": "Function: OrderService.create_order\nFile: services.py\nModule: services\nLine: 16\nParameters: 3\nCalled by: 0 functions\nCalls: 4 functions", "color": "#E1F5FF", "shape": "dot", "value": 3, "type": "method"}, {"id": "services.py::OrderService.process_order", "label": "OrderService.process_order", "title": "Function: OrderService.process_order\nFile: services.py\nModule: services\nLine: 30\nParameters: 2\nCalled by: 0 functions\nCalls: 4 functions", "color": "#E1F5FF", "shape": "dot", "value": 2, "type": "method"}, {"id": "services.py::OrderService.get_order_by_id", "label": "OrderService.get_order_by_id", "title": "Function: OrderService.get_order_by_id\nFile: services.py\nModule: services\nLine: 42\nParameters: 2\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 2, "type": "method"}, {"id": "services.py::OrderService.get_user_orders", "label": "OrderService.get_user_orders", "title": "Function: OrderService.get_user_orders\nFile: services.py\nModule: services\nLine: 49\nParameters: 2\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 2, "type": "method"}, {"id": "services.py::PaymentService.__init__", "label": "PaymentService.__init__", "title": "Function: PaymentService.__init__\nFile: services.py\nModule: services\nLine: 57\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "services.py::PaymentService.process_payment", "label": "PaymentService.process_payment", "title": "Function: PaymentService.process_payment\nFile: services.py\nModule: services\nLine: 60\nParameters: 3\nCalled by: 1 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 3, "type": "method"}, {"id": "services.py::PaymentService._validate_payment", "label": "PaymentService._validate_payment", "title": "Function: PaymentService._validate_payment\nFile: services.py\nModule: services\nLine: 71\nParameters: 3\nCalled by: 1 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 3, "type": "method"}, {"id": "services.py::PaymentService.get_total_revenue", "label": "PaymentService.get_total_revenue", "title": "Function: PaymentService.get_total_revenue\nFile: services.py\nModule: services\nLine: 82\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "services.py::PaymentService.get_payment_count", "label": "PaymentService.get_payment_count", "title": "Function: PaymentService.get_payment_count\nFile: services.py\nModule: services\nLine: 89\nParameters: 1\nCalled by: 0 functions\nCalls: 1 functions", "color": "#E1F5FF", "shape": "dot", "value": 1, "type": "method"}, {"id": "tests\\test_models.py::test_product_creation", "label": "test_product_creation", "title": "Function: test_product_creation\nFile: tests\\test_models.py\nModule: tests.test_models\nLine: 8\nParameters: 0\nCalled by: 0 functions\nCalls: 3 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_models.py::test_user_operations", "label": "test_user_operations", "title": "Function: test_user_operations\nFile: tests\\test_models.py\nModule: tests.test_models\nLine: 15\nParameters: 0\nCalled by: 0 functions\nCalls: 3 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_models.py::test_order_processing", "label": "test_order_processing", "title": "Function: test_order_processing\nFile: tests\\test_models.py\nModule: tests.test_models\nLine: 22\nParameters: 0\nCalled by: 0 functions\nCalls: 5 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_services.py::test_order_service", "label": "test_order_service", "title": "Function: test_order_service\nFile: tests\\test_services.py\nModule: tests.test_services\nLine: 10\nParameters: 0\nCalled by: 0 functions\nCalls: 4 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_services.py::test_payment_service", "label": "test_payment_service", "title": "Function: test_payment_service\nFile: tests\\test_services.py\nModule: tests.test_services\nLine: 21\nParameters: 0\nCalled by: 0 functions\nCalls: 4 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_utils.py::test_email_validation", "label": "test_email_validation", "title": "Function: test_email_validation\nFile: tests\\test_utils.py\nModule: tests.test_utils\nLine: 9\nParameters: 0\nCalled by: 0 functions\nCalls: 1 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_utils.py::test_calculate_total", "label": "test_calculate_total", "title": "Function: test_calculate_total\nFile: tests\\test_utils.py\nModule: tests.test_utils\nLine: 16\nParameters: 0\nCalled by: 0 functions\nCalls: 2 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "tests\\test_utils.py::test_discount_calculation", "label": "test_discount_calculation", "title": "Function: test_discount_calculation\nFile: tests\\test_utils.py\nModule: tests.test_utils\nLine: 26\nParameters: 0\nCalled by: 0 functions\nCalls: 1 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "utils.py::validate_email", "label": "validate_email", "title": "Function: validate_email\nFile: utils.py\nModule: utils\nLine: 10\nParameters: 1\nCalled by: 0 functions\nCalls: 3 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "utils.py::calculate_total", "label": "calculate_total", "title": "Function: calculate_total\nFile: utils.py\nModule: utils\nLine: 19\nParameters: 1\nCalled by: 0 functions\nCalls: 1 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "utils.py::format_currency", "label": "format_currency", "title": "Function: format_currency\nFile: utils.py\nModule: utils\nLine: 28\nParameters: 1\nCalled by: 0 functions\nCalls: 0 functions", "color": "#FFF4E1", "shape": "dot", "value": 1, "type": "function"}, {"id": "utils.py::apply_discount", "label": "apply_discount", "title": "Function: apply_discount\nFile: utils.py\nModule: utils\nLine: 33\nParameters: 2\nCalled by: 1 functions\nCalls: 0 functions", "color": "#FFF4E1", "shape": "dot", "value": 2, "type": "function"}, {"id": "utils.py::calculate_tax", "label": "calculate_tax", "title": "Function: calculate_tax\nFile: utils.py\nModule: utils\nLine: 42\nParameters: 2\nCalled by: 1 functions\nCalls: 0 functions", "color": "#FFF4E1", "shape": "dot", "value": 2, "type": "function"}, {"id": "utils.py::get_final_price", "label": "get_final_price", "title": "Function: get_final_price\nFile: utils.py\nModule: utils\nLine: 47\nParameters: 3\nCalled by: 0 functions\nCalls: 2 functions", "color": "#FFF4E1", "shape": "dot", "value": 3, "type": "function"}]);
+        var edges = new vis.DataSet([{"from": "folder::tests", "to": "file::tests\\test_models.py", "arrows": "to", "color": {"color": "#3498DB"}, "dashes": false, "width": 2, "title": "Folder Contains File"}, {"from": "folder::tests", "to": "file::tests\\test_services.py", "arrows": "to", "color": {"color": "#3498DB"}, "dashes": false, "width": 2, "title": "Folder Contains File"}, {"from": "folder::tests", "to": "file::tests\\test_utils.py", "arrows": "to", "color": {"color": "#3498DB"}, "dashes": false, "width": 2, "title": "Folder Contains File"}, {"from": "folder::tests", "to": "file::tests\\__init__.py", "arrows": "to", "color": {"color": "#3498DB"}, "dashes": false, "width": 2, "title": "Folder Contains File"}, {"from": "file::.gitignore", "to": "module::None", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::config.yaml", "to": "module::None", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::main.py", "to": "module::main", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::models.py", "to": "module::models", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::services.py", "to": "module::services", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::tests\\test_models.py", "to": "module::tests.test_models", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::tests\\test_services.py", "to": "module::tests.test_services", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::tests\\test_utils.py", "to": "module::tests.test_utils", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::tests\\__init__.py", "to": "module::tests", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::utils.py", "to": "module::utils", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "file::__init__.py", "to": "module::__init__", "arrows": "to", "color": {"color": "#2ECC71"}, "dashes": false, "width": 2, "title": "File Defines Module"}, {"from": "module::main", "to": "main.py::create_sample_data", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::main", "to": "main.py::process_sample_order", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::main", "to": "main.py::demonstrate_user_statistics", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::main", "to": "main.py::main", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Product.__init__", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Product.is_available", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Product.reduce_stock", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Product.get_price", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Product.update_price", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::User.__init__", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::User.add_order", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::User.get_total_spent", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::User.get_order_count", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Order.__init__", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Order.add_item", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Order.get_total", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Order.complete", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::models", "to": "models.py::Order.cancel", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::OrderService.__init__", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::OrderService.create_order", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::OrderService.process_order", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::OrderService.get_order_by_id", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::OrderService.get_user_orders", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::PaymentService.__init__", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::PaymentService.process_payment", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::PaymentService._validate_payment", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::PaymentService.get_total_revenue", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::services", "to": "services.py::PaymentService.get_payment_count", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_models", "to": "tests\\test_models.py::test_product_creation", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_models", "to": "tests\\test_models.py::test_user_operations", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_models", "to": "tests\\test_models.py::test_order_processing", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_services", "to": "tests\\test_services.py::test_order_service", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_services", "to": "tests\\test_services.py::test_payment_service", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_utils", "to": "tests\\test_utils.py::test_email_validation", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_utils", "to": "tests\\test_utils.py::test_calculate_total", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::tests.test_utils", "to": "tests\\test_utils.py::test_discount_calculation", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::utils", "to": "utils.py::validate_email", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::utils", "to": "utils.py::calculate_total", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::utils", "to": "utils.py::format_currency", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::utils", "to": "utils.py::apply_discount", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::utils", "to": "utils.py::calculate_tax", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "module::utils", "to": "utils.py::get_final_price", "arrows": "to", "color": {"color": "#F39C12"}, "dashes": false, "width": 2, "title": "Module Contains Function"}, {"from": "folder::", "to": "folder::tests", "arrows": "to", "color": {"color": "#3498DB"}, "dashes": false, "width": 2, "title": "Folder Contains Folder"}, {"from": "main.py::process_sample_order", "to": "main.py::create_sample_data", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "main.py::demonstrate_user_statistics", "to": "main.py::create_sample_data", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "main.py::main", "to": "main.py::demonstrate_user_statistics", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "main.py::main", "to": "main.py::process_sample_order", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "services.py::PaymentService.process_payment", "to": "services.py::PaymentService._validate_payment", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "utils.py::get_final_price", "to": "utils.py::apply_discount", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "utils.py::get_final_price", "to": "utils.py::calculate_tax", "arrows": "to", "color": {"color": "#848484"}, "dashes": false, "width": 1, "title": "Function Call"}, {"from": "main.py::process_sample_order", "to": "main.py::create_sample_data", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "main.py::demonstrate_user_statistics", "to": "main.py::create_sample_data", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "main.py::main", "to": "main.py::process_sample_order", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "main.py::main", "to": "main.py::demonstrate_user_statistics", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "models.py::Order.add_item", "to": "models.py::Product.is_available", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "models.py::Order.add_item", "to": "models.py::Product.reduce_stock", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "models.py::User.get_total_spent", "to": "models.py::Order.get_total", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "services.py::OrderService.process_order", "to": "services.py::PaymentService.process_payment", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "services.py::PaymentService.process_payment", "to": "services.py::PaymentService._validate_payment", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "utils.py::get_final_price", "to": "utils.py::apply_discount", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "utils.py::get_final_price", "to": "utils.py::calculate_tax", "arrows": "to", "color": {"color": "#95A5A6"}, "dashes": true, "width": 1, "title": "Dependency"}, {"from": "file::main.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User, Order (relative)"}, {"from": "module::main", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User, Order (relative)"}, {"from": "file::main.py", "to": "file::services.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: OrderService, PaymentService (relative)"}, {"from": "module::main", "to": "module::services", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: OrderService, PaymentService (relative)"}, {"from": "file::main.py", "to": "file::utils.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total, format_currency (+1 more) (relative)"}, {"from": "module::main", "to": "module::utils", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total, format_currency (+1 more) (relative)"}, {"from": "file::models.py", "to": "file::utils.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: calculate_total (relative)"}, {"from": "module::models", "to": "module::utils", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: calculate_total (relative)"}, {"from": "file::services.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Order, User, Product (relative)"}, {"from": "module::services", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Order, User, Product (relative)"}, {"from": "file::services.py", "to": "file::utils.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total (relative)"}, {"from": "module::services", "to": "module::utils", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total (relative)"}, {"from": "file::services.py", "to": "file::services.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: PaymentService (relative)"}, {"from": "module::services", "to": "module::services", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: PaymentService (relative)"}, {"from": "file::tests\\test_models.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User, Order (relative)"}, {"from": "module::tests.test_models", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User, Order (relative)"}, {"from": "file::tests\\test_services.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User (relative)"}, {"from": "module::tests.test_services", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User (relative)"}, {"from": "file::tests\\test_services.py", "to": "file::services.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: OrderService, PaymentService (relative)"}, {"from": "module::tests.test_services", "to": "module::services", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: OrderService, PaymentService (relative)"}, {"from": "file::tests\\test_services.py", "to": "file::utils.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email (relative)"}, {"from": "module::tests.test_services", "to": "module::utils", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email (relative)"}, {"from": "file::tests\\test_utils.py", "to": "file::utils.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total, apply_discount (relative)"}, {"from": "module::tests.test_utils", "to": "module::utils", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total, apply_discount (relative)"}, {"from": "file::tests\\test_utils.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product (relative)"}, {"from": "module::tests.test_utils", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product (relative)"}, {"from": "file::utils.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product (relative)"}, {"from": "module::utils", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product (relative)"}, {"from": "file::__init__.py", "to": "file::models.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User, Order (relative)"}, {"from": "module::__init__", "to": "module::models", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: Product, User, Order (relative)"}, {"from": "file::__init__.py", "to": "file::services.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: OrderService, PaymentService (relative)"}, {"from": "module::__init__", "to": "module::services", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: OrderService, PaymentService (relative)"}, {"from": "file::__init__.py", "to": "file::utils.py", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total (relative)"}, {"from": "module::__init__", "to": "module::utils", "arrows": "to", "color": {"color": "#9B59B6"}, "dashes": true, "width": 3, "title": "Imports: validate_email, calculate_total (relative)"}]);
+        
+        var container = document.getElementById('mynetwork');
+        var data = {
+            nodes: nodes,
+            edges: edges
+        };
+        var options = {
+            nodes: {
+                font: {
+                    size: 12
+                },
+                borderWidth: 2,
+                chosen: {
+                    node: function(values, id, selected, hovering) {
+                        values.borderWidth = 4;
+                        values.borderColor = '#FF0000';
+                    }
+                },
+                tooltip: {
+                    delay: 100,
+                    template: function(nodeData) {
+                        // Convert newlines to HTML line breaks for proper display
+                        var title = nodeData.title || '';
+                        return title.replace(/\n/g, '<br>');
+                    }
+                }
+            },
+            edges: {
+                smooth: {
+                    type: 'continuous'
+                },
+                width: 2
+            },
+            physics: {
+                enabled: true,
+                stabilization: {
+                    enabled: true,
+                    iterations: 200,
+                    onlyDynamicEdges: false,
+                    fit: true
+                },
+                barnesHut: {
+                    gravitationalConstant: -2000,
+                    centralGravity: 0.1,
+                    springLength: 200,
+                    springConstant: 0.04,
+                    damping: 0.09,
+                    avoidOverlap: 0.5
+                },
+                maxVelocity: 50,
+                minVelocity: 0.1,
+                solver: 'barnesHut',
+                timestep: 0.5
+            },
+            interaction: {
+                dragNodes: true,
+                dragView: true,
+                zoomView: true,
+                selectConnectedEdges: true,
+                hover: true
+            },
+            layout: {
+                improvedLayout: true
+            }
+        };
+        var network = new vis.Network(container, data, options);
+        
+        // Allow physics to stabilize initially, then disable for manual dragging
+        network.on("stabilizationEnd", function() {
+            // Disable physics but keep dragging enabled
+            network.setOptions({ 
+                physics: { enabled: false },
+                interaction: {
+                    dragNodes: true,
+                    dragView: true,
+                    zoomView: true
+                }
+            });
+        });
+        
+        // Ensure nodes are always draggable
+        network.on("dragStart", function(params) {
+            // Ensure physics stays disabled during drag
+            network.setOptions({ physics: { enabled: false } });
+        });
+        
+        // Re-enable dragging after any physics changes
+        network.on("stabilizationProgress", function() {
+            // Keep dragging enabled even during stabilization
+            network.setOptions({ 
+                interaction: { dragNodes: true }
+            });
+        });
+        
+        // Search functionality
+        var allNodes = nodes.get();
+        var allEdges = edges.get();
+        
+        function performSearch() {
+            var searchTerm = document.getElementById('searchBox').value.toLowerCase().trim();
+            var searchInfo = document.getElementById('searchInfo');
+            
+            if (!searchTerm) {
+                clearSearch();
+                return;
+            }
+            
+            // Find matching nodes
+            var matchingNodeIds = [];
+            var matchingNodes = [];
+            
+            allNodes.forEach(function(node) {
+                var label = (node.label || '').toLowerCase();
+                var file = (node.file || '').toLowerCase();
+                var module = (node.module || node.name || '').toLowerCase();
+                var path = (node.path || '').toLowerCase();
+                var id = (node.id || '').toLowerCase();
+                
+                if (label.includes(searchTerm) || 
+                    file.includes(searchTerm) || 
+                    module.includes(searchTerm) || 
+                    path.includes(searchTerm) ||
+                    id.includes(searchTerm)) {
+                    matchingNodeIds.push(node.id);
+                    matchingNodes.push(node);
+                }
+            });
+            
+            if (matchingNodeIds.length === 0) {
+                searchInfo.textContent = 'No matches found';
+                searchInfo.style.color = '#E74C3C';
+                // Gray out all nodes
+                var updateArray = allNodes.map(function(node) {
+                    return {
+                        id: node.id,
+                        hidden: false,
+                        opacity: 0.2,
+                        color: {
+                            border: '#CCCCCC',
+                            background: '#E8E8E8',
+                            highlight: { border: '#CCCCCC', background: '#E8E8E8' }
+                        }
+                    };
+                });
+                nodes.update(updateArray);
+                return;
+            }
+            
+            searchInfo.textContent = `Found ${matchingNodeIds.length} match(es)`;
+            searchInfo.style.color = '#27AE60';
+            
+            // Find connected nodes
+            var connectedNodeIds = new Set(matchingNodeIds);
+            allEdges.forEach(function(edge) {
+                if (matchingNodeIds.includes(edge.from) || matchingNodeIds.includes(edge.to)) {
+                    connectedNodeIds.add(edge.from);
+                    connectedNodeIds.add(edge.to);
+                }
+            });
+            
+            // Update all nodes: highlight matches, show connected, gray out others
+            var updateArray = allNodes.map(function(node) {
+                var isMatch = matchingNodeIds.includes(node.id);
+                var isConnected = connectedNodeIds.has(node.id) && !isMatch;
+                
+                if (isMatch) {
+                    // Matching nodes: full opacity, red border
+                    return {
+                        id: node.id,
+                        hidden: false,
+                        opacity: 1,
+                        color: {
+                            border: '#FF0000',
+                            background: node.color || '#FFFFFF',
+                            highlight: { border: '#FF0000', background: '#FFE1E1' }
+                        }
+                    };
+                } else if (isConnected) {
+                    // Connected nodes: full opacity, blue border
+                    return {
+                        id: node.id,
+                        hidden: false,
+                        opacity: 1,
+                        color: {
+                            border: '#3498DB',
+                            background: node.color || '#FFFFFF',
+                            highlight: { border: '#3498DB', background: '#E1F5FF' }
+                        }
+                    };
+                } else {
+                    // Other nodes: grayed out with reduced opacity
+                    return {
+                        id: node.id,
+                        hidden: false,
+                        opacity: 0.2,
+                        color: {
+                            border: '#CCCCCC',
+                            background: '#E8E8E8',
+                            highlight: { border: '#CCCCCC', background: '#E8E8E8' }
+                        }
+                    };
+                }
+            });
+            nodes.update(updateArray);
+            
+            // Fit to matching nodes
+            network.fit({
+                nodes: matchingNodeIds,
+                animation: true
+            });
+        }
+        
+        function clearSearch() {
+            document.getElementById('searchBox').value = '';
+            document.getElementById('searchInfo').textContent = '';
+            
+            // Show all nodes with original colors and full opacity
+            var updateArray = allNodes.map(function(node) {
+                return {
+                    id: node.id,
+                    hidden: false,
+                    opacity: 1,
+                    color: node.color
+                };
+            });
+            nodes.update(updateArray);
+            
+            // Reset view
+            network.fit({
+                animation: true
+            });
+        }
+        
+        // Enable Enter key to search
+        document.getElementById('searchBox').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+        
+        // Real-time search as you type (optional - can be removed if too slow)
+        var searchTimeout;
+        document.getElementById('searchBox').addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(function() {
+                if (document.getElementById('searchBox').value.trim()) {
+                    performSearch();
+                } else {
+                    clearSearch();
+                }
+            }, 300); // Wait 300ms after user stops typing
+        });
+    </script>
+</body>
+</html>
