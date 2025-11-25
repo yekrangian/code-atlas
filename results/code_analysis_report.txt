@@ -326,10 +326,10 @@ FUNCTION CALL CHAINS (Top 10)
 --------------------------------------------------------------------------------
 1. process_sample_order -> create_sample_data
 2. demonstrate_user_statistics -> create_sample_data
-3. main -> demonstrate_user_statistics
-4. main -> process_sample_order
+3. main -> process_sample_order
+4. main -> demonstrate_user_statistics
 5. process_payment -> _validate_payment
-6. get_final_price -> apply_discount
-7. get_final_price -> calculate_tax
+6. get_final_price -> calculate_tax
+7. get_final_price -> apply_discount
 
 ================================================================================

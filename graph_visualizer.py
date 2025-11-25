@@ -969,7 +969,12 @@ if __name__ == "__main__":
     with open(json_file, 'r') as f:
         graph_data = json.load(f)
     
+    # Create results directory
+    results_dir = Path("results")
+    results_dir.mkdir(exist_ok=True)
+    
     visualizer = GraphVisualizer(graph_data)
-    visualizer.generate_html_visualization()
-    visualizer.generate_text_report()
+    visualizer.generate_html_visualization(str(results_dir / "code_graph.html"))
+    visualizer.generate_text_report(str(results_dir / "code_analysis_report.txt"))
+    visualizer.generate_dot_output(str(results_dir / "code_graph.dot"))
 

@@ -863,8 +863,12 @@ if __name__ == "__main__":
     for key, value in graph_data["summary"].items():
         print(f"{key}: {value}")
     
+    # Create results directory
+    results_dir = Path("results")
+    results_dir.mkdir(exist_ok=True)
+    
     # Save to JSON
-    output_file = "code_graph.json"
+    output_file = results_dir / "code_graph.json"
     with open(output_file, 'w') as f:
         json.dump(graph_data, f, indent=2)
     print(f"\nGraph data saved to {output_file}")

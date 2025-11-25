@@ -1300,13 +1300,13 @@
     },
     {
       "source": "main.py::main",
-      "target": "main.py::demonstrate_user_statistics",
+      "target": "main.py::process_sample_order",
       "type": "calls",
       "relationship": "function_call"
     },
     {
       "source": "main.py::main",
-      "target": "main.py::process_sample_order",
+      "target": "main.py::demonstrate_user_statistics",
       "type": "calls",
       "relationship": "function_call"
     },
@@ -1318,13 +1318,13 @@
     },
     {
       "source": "utils.py::get_final_price",
-      "target": "utils.py::apply_discount",
+      "target": "utils.py::calculate_tax",
       "type": "calls",
       "relationship": "function_call"
     },
     {
       "source": "utils.py::get_final_price",
-      "target": "utils.py::calculate_tax",
+      "target": "utils.py::apply_discount",
       "type": "calls",
       "relationship": "function_call"
     },

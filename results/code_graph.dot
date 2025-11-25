@@ -126,11 +126,11 @@ digraph CodeGraph {
   "folder_" -> "folder_tests" [color="#3498DB", style=solid];
   "main_py_process_sample_order" -> "main_py_create_sample_data" [color="#848484", style=solid];
   "main_py_demonstrate_user_statistics" -> "main_py_create_sample_data" [color="#848484", style=solid];
-  "main_py_main" -> "main_py_demonstrate_user_statistics" [color="#848484", style=solid];
   "main_py_main" -> "main_py_process_sample_order" [color="#848484", style=solid];
+  "main_py_main" -> "main_py_demonstrate_user_statistics" [color="#848484", style=solid];
   "services_py_PaymentService_process_payment" -> "services_py_PaymentService__validate_payment" [color="#848484", style=solid];
-  "utils_py_get_final_price" -> "utils_py_apply_discount" [color="#848484", style=solid];
   "utils_py_get_final_price" -> "utils_py_calculate_tax" [color="#848484", style=solid];
+  "utils_py_get_final_price" -> "utils_py_apply_discount" [color="#848484", style=solid];
   "main_py_process_sample_order" -> "main_py_create_sample_data" [color="#95A5A6", style=dashed];
   "main_py_demonstrate_user_statistics" -> "main_py_create_sample_data" [color="#95A5A6", style=dashed];
   "main_py_main" -> "main_py_process_sample_order" [color="#95A5A6", style=dashed];
