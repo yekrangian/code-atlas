@@ -863,8 +863,18 @@ if __name__ == "__main__":
     for key, value in graph_data["summary"].items():
         print(f"{key}: {value}")
     
+    # Determine project folder name for results directory
+    project_path = Path(project_root).resolve()
+    if project_path.is_file():
+        project_folder_name = project_path.parent.name
+    elif str(project_path) == "." or str(project_path) == Path.cwd():
+        project_folder_name = Path.cwd().name
+    else:
+        project_folder_name = project_path.name
+    
     # Create results directory
-    results_dir = Path("results")
+    results_dir_name = f"{project_folder_name}_results"
+    results_dir = Path(results_dir_name)
     results_dir.mkdir(exist_ok=True)
     
     # Save to JSON

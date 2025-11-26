@@ -25,10 +25,27 @@ def main():
         print(f"Error: Path '{project_path}' does not exist.")
         sys.exit(1)
     
+    # Determine project folder name for results directory
+    if project_path.is_file():
+        # If it's a file, use the parent directory name
+        project_folder_name = project_path.parent.name
+    elif str(project_path) == "." or str(project_path) == Path.cwd():
+        # If it's current directory, use current directory name
+        project_folder_name = Path.cwd().name
+    else:
+        # Use the directory name itself
+        project_folder_name = project_path.name
+    
+    # Create results directory name
+    results_dir_name = f"{project_folder_name}_results"
+    results_dir = Path(results_dir_name)
+    results_dir.mkdir(exist_ok=True)
+    
     print("=" * 80)
     print("PYTHON CODE ANALYZER - Function Interaction Mapper")
     print("=" * 80)
     print(f"Analyzing project: {project_path}")
+    print(f"Results will be saved to: {results_dir}")
     print()
     
     # Analyze the project
@@ -38,9 +55,6 @@ def main():
     # Get graph data
     graph_data = analyzer.get_graph_data()
     
-    # Create results directory
-    results_dir = Path("results")
-    results_dir.mkdir(exist_ok=True)
     print(f"\n✓ Output directory created: {results_dir}")
     
     # Save raw JSON data
@@ -77,7 +91,7 @@ def main():
     print(f"  • {summary['total_classes']} classes found")
     print(f"  • {summary['functions_that_are_called']} functions are called by others")
     print(f"  • {summary['functions_that_call_others']} functions call other functions")
-    print("\nOutput files (saved in 'results' folder):")
+    print(f"\nOutput files (saved in '{results_dir_name}' folder):")
     print(f"  • {json_output} - Raw graph data (JSON)")
     print(f"  • {html_output} - Interactive visualization (open in browser)")
     print(f"  • {report_output} - Text report for architects")

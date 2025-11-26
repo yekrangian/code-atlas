@@ -969,9 +969,20 @@ if __name__ == "__main__":
     with open(json_file, 'r') as f:
         graph_data = json.load(f)
     
-    # Create results directory
-    results_dir = Path("results")
-    results_dir.mkdir(exist_ok=True)
+    # Try to infer project name from JSON file path
+    json_path = Path(json_file).resolve()
+    # Check if JSON is in a project_results folder
+    if json_path.parent.name.endswith("_results"):
+        results_dir = json_path.parent
+    else:
+        # Try to get project name from JSON file location or use default
+        if json_path.parent.name and json_path.parent.name != ".":
+            project_folder_name = json_path.parent.name
+            results_dir_name = f"{project_folder_name}_results"
+            results_dir = Path(results_dir_name)
+        else:
+            results_dir = Path("results")
+        results_dir.mkdir(exist_ok=True)
     
     visualizer = GraphVisualizer(graph_data)
     visualizer.generate_html_visualization(str(results_dir / "code_graph.html"))
